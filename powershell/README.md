@@ -2,4 +2,4 @@
 
 | scripts | Descrição |
 |:-|:-|
-| [Instalar](instalar) | Scripts do PowerShell para instalar/desinstalar o CrowdStrike Falcon Sensor para Windows |
+| [Instalar](install) | Scripts do PowerShell para instalar/desinstalar o CrowdStrike Falcon Sensor para Windows |
