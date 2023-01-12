@@ -1,17 +1,17 @@
-# Falcon Scripts
+# Scripts Falcão
 
-This repository contains different types of scripts to facilitate the use of the CrowdStrike Falcon Sensor on different platforms.
+Este repositório contém diferentes tipos de scripts para facilitar o uso do CrowdStrike Falcon Sensor em diferentes plataformas.
 
-| Scripts | Description |
+| scripts | Descrição |
 |:-|:-|
-| [Bash](bash) | Bash scripts for interacting with the CrowdStrike Falcon Sensor for Linux |
-| [PowerShell](powershell) | PowerShell scripts for interacting with the CrowdStrike Falcon Sensor for Windows |
-| [SystemD](systemd) | SystemD scripts for starting the CrowdStrike Falcon Container Linux Sensor |
+| [Bash](Bash) | Scripts bash para interagir com o CrowdStrike Falcon Sensor para Linux |
+| [PowerShell](powershell) | scripts PowerShell para interagir com o sensor CrowdStrike Falcon para Windows |
+| [SystemD](systemd) | scripts SystemD para iniciar o CrowdStrike Falcon Container Linux Sensor |
 
-## Contributing
+## Contribuindo
 
-All contributions are welcome. Please make sure to verify that the CI/CD checks pass and are not failing.
+Todas as contribuições são bem-vindas. Certifique-se de verificar se as verificações de CI/CD são aprovadas e não estão falhando.
 
-## License
+## Licença
 
-See [LICENSE](LICENSE)
+Consulte [LICENÇA](LICENÇA)
