@@ -1,33 +1,25 @@
 # Falcon Powershell Installation Scripts
 
-Powershell scripts to install/uninstall Falcon Sensor through the Falcon APIs on a Windows endpoint.
+Scripts Powershell para instalar/desinstalar o Falcon Sensor por meio das APIs do Falcon em um endpoint do Windows.
 
-## Falcon API Permissions
+Permissões da API Falcon
+Os clientes de API recebem um ou mais escopos de API. Os escopos permitem o acesso a APIs CrowdStrike específicas e descrevem as ações que um cliente de API pode executar.
 
-API clients are granted one or more API scopes. Scopes allow access to specific CrowdStrike APIs and describe the actions that an API client can perform.
+Verifique se os seguintes escopos de API estão ativados:
 
-Ensure the following API scopes are enabled:
-- Install:
-  * **Sensor Download** [read]
-  * **Sensor update policies** [read]
-- Uninstall:
-  * **Host** [write]
-  * **Sensor update policies** [write]
+Instalar:
+Baixar Sensor [ler]
+Políticas de atualização de sensores [ler]
+Desinstalar:
+Anfitrião [escrever]
+Políticas de atualização de sensores [escrever]
+Configuração
+Instalar
+Usa as APIs CrowdStrike Falcon para verificar a versão do sensor atribuída a uma política Windows Sensor Update, baixa essa versão e a instala na máquina local. Por padrão, depois de concluído, o script exclui a si mesmo e o pacote do instalador baixado. As etapas individuais e quaisquer mensagens de erro relacionadas são registradas em 'Windows\Temp\csfalcon_install.log', a menos que especificado de outra forma.
 
-## Configuration
+O script deve ser executado como administrador na máquina local para que a instalação do Falcon Sensor seja concluída.
 
-### Install
-
-Uses the CrowdStrike Falcon APIs to check the sensor version assigned to a ***Windows Sensor Update policy***,
-downloads that version, then installs it on the local machine. By default, once complete, the script
-deletes itself and the downloaded installer package. The individual steps and any related error messages
-are logged to `'Windows\Temp\csfalcon_install.log'` unless otherwise specified.
-
-The script must be run as an administrator on the local machine in order for the Falcon Sensor installation
-to complete.
-
-Script options can be passed as parameters or defined in the param() block. Default values are listed in
-the parameter descriptions:
+As opções de script podem ser passadas como parâmetros ou definidas no bloco param(). Os valores padrão estão listados nas descrições dos parâmetros:
 
 ```pwsh
 .PARAMETER FalconCloud
@@ -58,21 +50,21 @@ Time to wait, in seconds, for sensor to provision [default: 1200]
 A comma-separated list of tags to apply to the host after sensor installation [default: $null]
 ```
 
-Example:
+Exemplo:
 ```pwsh
 PS>.\falcon_windows_install.ps1 -FalconClientId <string> -FalconClientSecret <string>
 ```
 
-### Uninstall
+### Desinstalar
 
-Uninstalls the CrowdStrike Falcon Sensor for Windows. By default, once complete, the script
-deletes itself and the downloaded uninstaller package (if necessary). The individual steps and any related error messages are logged to `'Windows\Temp\csfalcon_uninstall.log'` unless otherwise specified.
+Desinstala o Sensor CrowdStrike Falcon para Windows. Por padrão, depois de concluído, o script
+exclui a si mesmo e o pacote de desinstalação baixado (se necessário). As etapas individuais e quaisquer mensagens de erro relacionadas são registradas em `'Windows\Temp\csfalcon_uninstall.log'`, a menos que especificado de outra forma.
 
-The script must be run as an administrator on the local machine in order for the Falcon Sensor installation
-to complete.
+O script deve ser executado como administrador na máquina local para a instalação do Falcon Sensor
+completar.
 
-Script options can be passed as parameters or defined in the param() block. Default values are listed in
-the parameter descriptions:
+As opções de script podem ser passadas como parâmetros ou definidas no bloco param(). Os valores padrão são listados em
+as descrições dos parâmetros:
 
 ```pwsh
 .PARAMETER MaintenanceToken
@@ -100,15 +92,14 @@ CrowdStrike Falcon OAuth2 API Client Secret [Required if RemoveHost is $true]
 Member CID, used only in multi-CID ("Falcon Flight Control") configurations and with a parent management CID.
 ```
 
-Examples:
-
-Basic example that will uninstall the sensor with the provided maintenance token
+Exemplos:
+Exemplo básico que desinstalará o sensor com o token de manutenção fornecido
 ```pwsh
 PS>.\falcon_windows_uninstall.ps1 -MaintenanceToken <string>
 ```
 
-An example using the Falcon API to retrieve the maintenance token and remove the host from the Falcon console
-after uninstalling.
+Um exemplo usando a API do Falcon para recuperar o token de manutenção e remover o host do console do Falcon
+após a desinstalação.
 ```pwsh
 PS>.\falcon_windows_uninstall.ps1 -FalconClientId <string> -FalconClientSecret <string> -RemoveHost $true
 ```
