@@ -1,4 +1,4 @@
-# Scripts Falcão
+# Scripts Falcon
 
 Este repositório contém diferentes tipos de scripts para facilitar o uso do CrowdStrike Falcon Sensor em diferentes plataformas.
 
